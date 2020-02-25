@@ -1,7 +1,8 @@
 package no.hvl.dat102.mengde.klient;
 
-import no.hvl.dat102.mengde.adt.MengdeADT;
-import no.hvl.dat102.mengde.kjedet.KjedetMengde;
+import no.hvl.dat102.mengde.adt.SetADT;
+import no.hvl.dat102.mengde.kjedet.LinkedSet;
+import no.hvl.dat102.mengde.tabell.ArraySet;
 
 public class KlientBingo {
 	// Oppretter 2 mengder med 75 bingokuler i hver.
@@ -9,34 +10,42 @@ public class KlientBingo {
 	// og om de to mengdene er nøyaktig like.
 
 	public static void main(String[] a) {
+	int x =1;
+		SwapClass<Bingokule> classSet = new SwapClass<>();
 		final int ANTALL_BALLER = 75;
-		MengdeADT<Bingokule> mengde1 = new KjedetMengde<Bingokule>();
-		MengdeADT<Bingokule> mengde2 = new KjedetMengde<Bingokule>();
+		SetADT<Bingokule> mengde1 = new ArraySet<Bingokule>();
+		SetADT<Bingokule> mengde2 = new LinkedSet<Bingokule>();
+
+		SwapClass.setX(1);
+		SetADT<Bingokule> mengde3 = SwapClass.retrieveClass();
+		SetADT<Bingokule> mengde4 = SwapClass.retrieveClass();
+
 		Bingokule kule1 = null;
 		Bingokule kule2 = null;
 
 		for (int i = 1; i <= ANTALL_BALLER; i++) {
 			kule1 = new Bingokule(i);
 			kule2 = new Bingokule(ANTALL_BALLER + 1 - i);
-			mengde1.leggTil(kule1);
-			mengde2.leggTil(kule2);
+			mengde3.leggTil(kule1);
+			mengde4.leggTil(kule2);
 		}
+		System.out.println(mengde3);
 
-		System.out.println("\nAntall kuler totalt: " + mengde1.antall());
+		System.out.println("\nAntall kuler totalt: " + mengde3.antall());
 		System.out.println();
 
 		kule1 = new Bingokule(10);
-		if (mengde1.inneholder(kule1)) {
+		if (mengde3.hasThis(kule1)) {
 			System.out.println("kule 1 funnet i mengde 1");
 		}
 
-		if (mengde1.equals(mengde2)) {
+		if (mengde3.equals(mengde4)) {
 			System.out.println("Like mengder");
 		}
 
-		if (!mengde1.erTom()) {
-			mengde1.fjern(kule1);
-			if (!mengde1.equals(mengde2)) {
+		if (!mengde3.erTom()) {
+			mengde3.fjern(kule1);
+			if (!mengde3.equals(mengde4)) {
 				System.out.println("Ulike mengder");
 			}
 		}
