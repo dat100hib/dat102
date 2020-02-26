@@ -12,7 +12,7 @@ public class KlientBingo {
 	public static void main(String[] a) {
 	int x =1;
 		SwapClass<Bingokule> classSet = new SwapClass<>();
-		final int ANTALL_BALLER = 75;
+		final int ANTALL_BALLER = 53;
 		SetADT<Bingokule> mengde1 = new ArraySet<Bingokule>();
 		SetADT<Bingokule> mengde2 = new LinkedSet<Bingokule>();
 

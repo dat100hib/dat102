@@ -68,31 +68,17 @@ public class ArraySet<T> implements SetADT<T> {
 
     @Override
     public T fjern(T element) {
-        // Søker etter og fjerner element. Returnerer null-ref ved ikke-funn
-
         if (erTom())
             throw new EmptyCollectionException("mengde");
-
-
-        T removed = null;
-
-        // Check if first
-        for (int scan = 0; scan < antall; antall++) {
+        for (int scan = 0; scan < antall; scan++) {
             if (tab[scan].equals(element)) {
-                removed = tab[scan];
+                T removed = tab[scan];
                 tab[scan] = tab[antall - 1];
-                T[] kopi = (T[]) (new Object[antall - 1]);
-                for (int i = 0; i < kopi.length; i++) {
-                    kopi[i] = tab[i];
-                }
-                tab = kopi;
                 antall--;
-                break;
+                return removed;
             }
-
         }
-
-        return removed;
+        return null;
     }
 
     @Override
@@ -104,73 +90,32 @@ public class ArraySet<T> implements SetADT<T> {
 
     @Override
     public boolean equals(Object m2) {
-        boolean provenEqual=false;
-        T element;
-
-        ArraySet<T> refArray = (ArraySet<T>) m2;
-
-        T[]m3 = refArray.tab;
-
-        // Check if size missmatch
-        if (antall != refArray.antall)
-            return false;
-
-        // considered a different approach where once an element of m3 has been matched
-        // to an element in this it would be removed for future comparison.
-        // However doing some quick maths I came to the realization that
-        // the 0.5n*n is still n^2
-
-        for (int scan = 0; scan < antall; scan++) {
-            provenEqual=false;
-        	for (int innerScan = 0; innerScan < antall; innerScan++) {
-                if (tab[scan].equals(m3[innerScan])) {
-                    provenEqual = true;
-
-                }
-            }
-            // If an element had no equal he is unique without equal
-            if(!provenEqual){
-			return  false;
-			}
-
-
-        }
-
-
-        return provenEqual;
+        if (antall !=((ArraySet<T>)m2).antall) return false;
+        for(Iterator i = ((ArraySet<T>) m2).iterate(); i.hasNext(); )
+            if(!this.hasThis((T)i.next())) return false;
+        return true;
     }
+
 
     @Override
     public void addAll(SetADT<T> m2) {
-        Iterator<T> teller = m2.iterate();
-        while (teller.hasNext())
+        for (Iterator<T> teller = m2.iterate() ; teller.hasNext();)
             leggTil(teller.next());
     }
 
-    /*
-     * Denne versjonen av unionen er lite effekktiv
-     *
-     * @Override public MengdeADT<T> union(MengdeADT<T> m2) { TabellMengde<T> begge
-     * = new TabellMengde<T>(); for (int i = 0; i < antall; i++) {
-     * begge.leggTil(tab[i]); } Iterator<T> teller = m2.oppramser();
-     *
-     * while (teller.hasNext()) { begge.leggTil(teller.next()); } return
-     * (MengdeADT<T>)begge; }
-     */
+
     @Override
 
     public SetADT<T> union(SetADT<T> m2) {
-        SetADT<T> both = new ArraySet<T>();
+        SetADT<T> both = (new ArraySet<T>());
         T element = null;
         both.addAll(this);
         Iterator<T> iterator = m2.iterate();
-        while(iterator.hasNext())
-        {
+        while(iterator.hasNext()){
             element = iterator.next();
             if(!both.hasThis(element)){
                 ((ArraySet<T>)both).settInn(element);
             }
-
         }
         return both;
     }//
@@ -200,14 +145,10 @@ public class ArraySet<T> implements SetADT<T> {
         while(iterator.hasNext()){
             element = iterator.next();
             if(!m2.hasThis(element)){
-
                 ((ArraySet<T>)diffSet).settInn(element);
             }
 
         }
-
-
-
         return diffSet;
     }
 

@@ -68,30 +68,17 @@ public class LinkedSet<T> implements SetADT<T> {
 
 	@Override
 	public T fjern(T element) {
-
 		if (erTom())
 			throw new EmptyCollectionException("mengde");
-
-		boolean funnet = false;
-		LinearNode<T> previous, current;
-		T result = null;
-		current = previous = start;
-
-		//Check if first element is
-		if(start.getElement().equals(element)){
-			result = start.getElement();
-			start = start.getNeste();
-			size--;
-			return result;
-		}
+		LinearNode<T> previous, current = previous = start;
 
 
-		for (int scan = 0; scan < size && !funnet; scan++) {
+		for (int scan = 0; scan < size; scan++) {
 			if (current.getElement().equals(element)) {
-				result = current.getElement();
+				T result = current.getElement();
 				previous.setNeste(current.getNeste());
 				size--;
-				funnet=true;
+				return result;
 			} else {
 				previous = current;
 				current = current.getNeste();
@@ -99,7 +86,7 @@ public class LinkedSet<T> implements SetADT<T> {
 		}
 
 
-		return result;
+		return null;
 	}//
 
 	@Override
@@ -118,38 +105,12 @@ public class LinkedSet<T> implements SetADT<T> {
 
 	@Override
 	public boolean equals(Object m2) {
-		boolean provenEqual = false;
-
-		LinkedSet<T> ref = (LinkedSet<T>) m2;
-		LinearNode<T> refStart = ref.start;
-		LinearNode<T> current = start;
-
-
-		if(this.size != ref.size)
-			return false;
-
-		for(int scan = 0; scan < size; scan ++){
-			provenEqual=false;
-			for(int innerScan = 0; innerScan < size; innerScan++) {
-				if (current.getElement().equals(refStart.getElement())){
-					provenEqual=true;
-					break;
-				}
-
-				refStart= refStart.getNeste();
-
-			}
-
-			if(!provenEqual){
-				return false;
-			}
-			current= current.getNeste();
-			refStart = ref.start;
-		}
-
-
-		return provenEqual;
+		if (size != ((LinkedSet<T>) m2).size) return false;
+		for (Iterator i = ((LinkedSet<T>) m2).iterate(); i.hasNext(); )
+			if (!this.hasThis((T) i.next())) return false;
+		return true;
 	}
+
 
 	@Override
 	public boolean erTom() {
@@ -163,7 +124,7 @@ public class LinkedSet<T> implements SetADT<T> {
 
 	@Override
 	public SetADT<T> union(SetADT<T> m2) {
-		SetADT<T> both = new LinkedSet<T>();
+		SetADT<T> both = (new LinkedSet<T>());
 		T element = null;
 
 		both.addAll(this);
@@ -174,11 +135,6 @@ public class LinkedSet<T> implements SetADT<T> {
 				((LinkedSet<T>)both).settInn(element);
 			}
 		}
-
-
-		/*
-		 * Fyll ut
-		 */
 		return both;
 	}//
 
@@ -195,7 +151,6 @@ public class LinkedSet<T> implements SetADT<T> {
 				((LinkedSet<T>)sharedSet).settInn(element);
 			}
 		}
-
 		return sharedSet;
 	}
 
@@ -211,8 +166,6 @@ public class LinkedSet<T> implements SetADT<T> {
 				((LinkedSet<T>)diffSet).settInn(element);
 			}
 		}
-
-
 		return diffSet;
 	}
 

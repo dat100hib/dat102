@@ -24,6 +24,7 @@ public class DataContact {
 
     public int findMemberIndex(String memberName) {
         Iterator iterator = memberArray.iterate();
+
         for(Medlem test = (Medlem)iterator.next();iterator.hasNext();test = (Medlem)iterator.next() ) {
             if (test.getName().equals(memberName)) {
                 return test.getStatusIndex();
