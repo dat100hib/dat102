@@ -72,7 +72,6 @@ public class LinkedSet<T> implements SetADT<T> {
 			throw new EmptyCollectionException("mengde");
 		LinearNode<T> previous, current = previous = start;
 
-
 		for (int scan = 0; scan < size; scan++) {
 			if (current.getElement().equals(element)) {
 				T result = current.getElement();
@@ -84,8 +83,6 @@ public class LinkedSet<T> implements SetADT<T> {
 				current = current.getNeste();
 			}
 		}
-
-
 		return null;
 	}//
 

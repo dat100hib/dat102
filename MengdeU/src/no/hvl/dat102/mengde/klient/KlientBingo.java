@@ -16,7 +16,7 @@ public class KlientBingo {
 		SetADT<Bingokule> mengde1 = new ArraySet<Bingokule>();
 		SetADT<Bingokule> mengde2 = new LinkedSet<Bingokule>();
 
-		SwapClass.setX(1);
+		SwapClass.setX(2);
 		SetADT<Bingokule> mengde3 = SwapClass.retrieveClass();
 		SetADT<Bingokule> mengde4 = SwapClass.retrieveClass();
 
