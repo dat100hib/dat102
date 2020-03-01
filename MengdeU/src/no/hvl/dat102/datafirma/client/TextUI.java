@@ -25,6 +25,7 @@ public class TextUI {
         hobby= input.nextLine();
         (newGuy.getHobbies()).leggTil(new Hobby(hobby));
     }
+
 return newGuy;
 }
 
@@ -35,22 +36,34 @@ public static void printHobbies(Medlem member){
 
 
 public static void printConnectedMembers(DataContact archive){
-    System.out.println("Couples:            Hobbies:");
+    System.out.printf("%-20s %s %n","Couples:" , "Hobbies:");
     Medlem[] search = archive.getMemberArray();
     for(int i = 0; i<archive.getMemberSum(); i++){
-        if(search[i].getStatusIndex()!=-1){
-            System.out.println(search[i].getName()+" and "+ search[search[i].getStatusIndex()].getName()+"          "+ search[i].getHobbies().toString() );
-            search[search[i].getStatusIndex()] = new Medlem();
+        if(search[i].getStatusIndex()>i){
+              System.out.printf("%-20s %s %n", search[i].getName()+" and "+ search[search[i].getStatusIndex()].getName() , search[i].getHobbies().toString());
         }
-        System.out.println("Amount of couples: " +archive.getCoupleSum());
-
-
-
 
     }
+    System.out.println("Amount of couples: " +archive.getCoupleSum());
 
 
 
+
+}
+
+
+public static void run(DataContact archive){
+
+    Scanner input = new Scanner(System.in);
+    String  str="";
+    while(!str.equals("zzz")) {
+
+
+        archive.addMember(TextUI.readMember());
+        System.out.println("Add another member? Cancel with zzz");
+        str = input.nextLine();
+
+    }
 
 
 }

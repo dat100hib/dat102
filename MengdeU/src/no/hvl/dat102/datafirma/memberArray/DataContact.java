@@ -14,7 +14,7 @@ public class DataContact {
     public DataContact(Medlem[] memberArray)
     {
     this.memberArray = memberArray;
-    memberSum = memberArray.length;
+    memberSum = 0;
 
     }
 
@@ -25,6 +25,8 @@ public class DataContact {
     public void addMember(Medlem medlem){
         memberArray[memberSum]= medlem;
         memberSum++;
+        findPartnerFor(memberArray[memberSum-1].getName());
+
     }
 
     /**
@@ -53,13 +55,14 @@ public class DataContact {
         }
         // lonley member
         Medlem whoAmI = memberArray[findMemberIndex(memberName)];
-        // Check if whoAmI is connected, POLYGAMY NOT ALLOWED. jesus brian... Leave some for the rest of us.
+        // Check if whoAmI is connected, mormon connect not allowed.
         if(whoAmI.getStatusIndex()!=-1){
             return whoAmI.getStatusIndex();
         }
 
         for(int loveScan = 0; loveScan < memberSum;loveScan ++ ) {
-            if(whoAmI.passerTil(memberArray[loveScan]) && (memberArray[loveScan].getStatusIndex()!=-1)){
+            // Check self not self & check self is not connected & can the self connect and make wet in the warm?
+            if(!whoAmI.equals(memberArray[loveScan]) && whoAmI.getStatusIndex()==-1 && whoAmI.passerTil(memberArray[loveScan]) ){
                 // If lonely member found partner who does not already have a partner, get matched and update.
                 // polygamy NOT allowed!
                 whoAmI.setStatusIndex(loveScan);
