@@ -19,7 +19,7 @@ public class Karakter {
 			kar = 'B';
 		} else if (poeng >= 60) {
 			kar = 'C';
-		} else if (poeng > 50) {// Logisk feil
+		} else if (poeng >= 50) {// Logisk feil
 			kar = 'D';
 		} else if (poeng >= 40) {
 			kar = 'E';

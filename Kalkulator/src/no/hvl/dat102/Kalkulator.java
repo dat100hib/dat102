@@ -18,6 +18,10 @@ public class Kalkulator {
 	public static int div(int tall1, int tall2) {
 		return tall1 / tall2;
 	}
+	
+	public static boolean t() {
+		return false;
+	}
 
 	/**
 	 * @param args

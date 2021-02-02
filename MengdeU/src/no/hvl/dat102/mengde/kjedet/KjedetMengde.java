@@ -16,6 +16,8 @@ public class KjedetMengde<T> implements MengdeADT<T> {
 	/**
 	 * Oppretter en tom mengde.
 	 */
+	
+	//OOSSASFASFMAKFAKFAKFNOWKFNIOFNOFNOINFIO
 	public KjedetMengde() {
 		antall = 0;
 		start = null;
@@ -30,7 +32,7 @@ public class KjedetMengde<T> implements MengdeADT<T> {
 			antall++;
 		}
 	}
-
+	
 	@Override
 	public void leggTilAlle(MengdeADT<T> m2) {
 		Iterator<T> teller = m2.oppramser();

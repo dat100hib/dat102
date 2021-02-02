@@ -11,7 +11,13 @@ public class TestKalkulator {
 
 	@Test
 	public void testAdd() {
-		assertEquals("Test av 1+2", 3, Kalkulator.add(1, 2));
+		assertEquals("Test av 1+5", 6, Kalkulator.add(1, 5));
+	}
+	
+	
+	@Test
+	public void testT() {
+		assertFalse(Kalkulator.t());
 	}
 
 	@Test

@@ -8,7 +8,7 @@ public class SkriveTilFil {
     public static void main(String[] args) {
         
         final String SKILLE = ":";                // parameter når vi lager metode
-        final String ANSATT_FIL = "ansatte.txt"; // parameter når vi lager metode
+        final String ANSATT_FIL = ""; // parameter når vi lager metode
         
         Ansatt anne = new Ansatt("Anne", "Dahl", 220, Ansatt.KVINNE);
         Ansatt knut = new Ansatt("Knut", "Olsen", 180, Ansatt.MANN);
