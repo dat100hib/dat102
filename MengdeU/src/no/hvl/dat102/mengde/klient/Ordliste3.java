@@ -16,6 +16,7 @@ public class Ordliste3 {
 		for (int i = 0; i < ord1.length; i++) {
 			ordListe1.leggTil(ord1[i]);
 		}
+		int ant = ordListe1.antall();
 
 		MengdeADT<String> ordListe2 = new KjedetMengde<String>();
 
@@ -24,7 +25,6 @@ public class Ordliste3 {
 		}
 
 		// Lager unionen av de to ordlistene
-
 		MengdeADT<String> ordListeBegge = new KjedetMengde<String>();
 
 		ordListeBegge = ordListe1.union(ordListe2);

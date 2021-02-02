@@ -2,13 +2,14 @@ package no.hvl.dat102.klient;
 
 import no.hvl.dat102.EmptyCollectionException;
 import no.hvl.dat102.tabell.TabellStabel;
+import no.hvl.dat102.adt.*;
 
 public class KlientStabel {
 	public static void main(String[] args) {
 
 		String str = "netsket re etteD";
 		int lengde = str.length();
-		TabellStabel<Character> tegnStabel = new TabellStabel<Character>();
+		StabelADT<Character> tegnStabel = new TabellStabel<>();
 		for (int i = 0; i < lengde; i++) {
 			tegnStabel.push((str.charAt(i)));
 		}
@@ -16,7 +17,7 @@ public class KlientStabel {
 		System.out.println(str);
 		try {
 			while (!tegnStabel.erTom()) {
-				Character tegn = tegnStabel.pop();
+				char tegn = tegnStabel.pop();
 				System.out.print(tegn);
 			}
 			System.out.println();
