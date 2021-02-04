@@ -1,36 +1,37 @@
-package no.hvl.dat102.mengde.kjedet;
+package no.hvl.dat102.kjedet;
+
 //  Representerer en node.
 //************************************************************
 
-class LinearNode<T>{
+public class LinearNode<T>{
   private LinearNode<T> neste;
   private T element;
  
   /**********************************************************
     Oppretter en tom node
   **********************************************************/
-  public LinearNode() {
+  public LinearNode(){
     neste   =  null;
     element = null;
   }
    /**********************************************************
     Oppretter en node med et element.
   **********************************************************/
-  public LinearNode (T elem) {
+  public LinearNode (T elem){
     neste   = null;
     element = elem;
   }
  /**********************************************************
     Returnerer etterfølger.
   **********************************************************/
-  public LinearNode<T> getNeste() {
+  public LinearNode<T> getNeste(){
     return neste;
   }
  
   /**********************************************************
     Setter neste til node
   **********************************************************/
-  public void setNeste (LinearNode<T> node) {
+  public void setNeste (LinearNode<T> node){
     neste = node;
   }
  
@@ -42,9 +43,9 @@ class LinearNode<T>{
   }
  
   /**********************************************************
-    Setter nytt element i denne noden.
+    Setter nytt element for denne noden.
   **********************************************************/
-  public void setElement (T elem) {
+  public void setElement (T elem){
     element = elem;
   }
 

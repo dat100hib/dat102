@@ -1,11 +1,11 @@
 package no.hvl.dat102.mengde.klient;
 
-import java.util.Scanner;
-
 import no.hvl.dat102.mengde.adt.MengdeADT;
 import no.hvl.dat102.mengde.kjedet.KjedetMengde;
 
-public class Ordliste {
+import java.util.Scanner;
+
+public class Ordliste2 {
 
 	/**
 	 * @param args
@@ -14,7 +14,7 @@ public class Ordliste {
 
 		MengdeADT<String> ordListe1 = new KjedetMengde<String>();
 
-		String[] ord = { "God", "dag", "Hans", "Hansen", "Hansaby", "Førde","Olsen", "Ole", "buss", "rute", "Bergen" };
+		String[] ord = { "God", "dag", "Hans", "Hansen", "Hansaby","Førde", "Olsen", "Ole", "buss", "rute", "Bergen" };
 
 		Scanner tastatur = new Scanner(System.in);
 		// Legger til ordene i mengden ordListe1
@@ -24,7 +24,7 @@ public class Ordliste {
 		}
 		MengdeADT<String> ordListe2 = new KjedetMengde<String>();
 
-		System.out.println("Oppgi en streng, avslutt med zzz:");
+		System.out.print("Oppgi en streng, avslutt med zzz :");
 		String streng = tastatur.nextLine();
 		// Leser inn ord
 		while (!streng.equals("zzz")) {
@@ -37,7 +37,7 @@ public class Ordliste {
 			}
 			// Legger innleste ord inn i ordliste2
 			ordListe2.leggTil(streng);
-			System.out.println("Oppgi en streng, avslutt med zzz:");
+			System.out.print("Oppgi en streng, avslutt med zzz :");
 			streng = tastatur.nextLine();
 
 		} // while
@@ -45,9 +45,9 @@ public class Ordliste {
 		// Lager unionen av de to ordlistene
 		MengdeADT<String> ordListeBegge = new KjedetMengde<String>();
 
-		ordListeBegge = (KjedetMengde<String>) ordListe1.union(ordListe2);
+		ordListeBegge = ordListe1.union(ordListe2);
 
-		System.out.println("\nUtskrift av unionen av begge ordlistene");
+		System.out.println("Utskrift av unionen av begge ordlistene");
 		String hentStreng = "";
 		while (!ordListeBegge.erTom()) {
 			hentStreng = ordListeBegge.fjernTilfeldig();
@@ -58,9 +58,9 @@ public class Ordliste {
 		// Lager snittet av de to ordlistene
 		MengdeADT<String> ordListeFelles = new KjedetMengde<String>();
 
-		ordListeFelles = (KjedetMengde<String>) ordListe1.snitt(ordListe2);
+		ordListeFelles = ordListe1.snitt(ordListe2);
 
-		System.out.println("\nUtskrift av snittet av begge ordlistene");
+		System.out.println("Utskrift av snittet av begge ordlistene");
 		hentStreng = "";
 		while (!ordListeFelles.erTom()) {
 			hentStreng = ordListeFelles.fjernTilfeldig();
@@ -71,9 +71,9 @@ public class Ordliste {
 		// Lager differansen av de to ordlistene
 		MengdeADT<String> ordListeDiff = new KjedetMengde<String>();
 
-		ordListeDiff = (KjedetMengde<String>) ordListe1.differens(ordListe2);
+		ordListeDiff = ordListe1.differens(ordListe2);
 
-		System.out.println("\nUtskrift av differensen av begge ordlistene");
+		System.out.println("Utskrift av differensen av begge ordlistene");
 		hentStreng = "";
 		while (!ordListeDiff.erTom()) {
 			hentStreng = ordListeDiff.fjernTilfeldig();
