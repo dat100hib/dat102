@@ -1,7 +1,9 @@
 package test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -18,20 +20,23 @@ public class KoeTest<T> {
 	private Integer e3 = 4;
 	private Integer e4 = 5;
 
-	protected KoeADT<Integer> reset();
+	protected KoeADT<Integer> reset() {
+		return null;
+	}
 
 	/**
 	 * Hent en ny kø for hver test.
 	 * 
 	 * @return
 	 */
+	
 	@BeforeEach
 	public void setup() {
 		Koe = reset();
 	}
 	
 	@Test
-	void innKoe() {
+	void innOgUtKoe() {
 		Koe.innKoe(e0);
 		Koe.innKoe(e1);
 		Koe.innKoe(e2);
@@ -44,26 +49,26 @@ public class KoeTest<T> {
 		assertEquals(e4, Koe.utKoe());
 	}
 	
-	@Test
-	T utKoe() {
-		Koe.utKoe();
-		assertEquals(e0, Koe.utKoe());
-		return null;
-	}
 	
 	
 	@Test
 	T foerste() {
+		assertEquals(e0, Koe.foerste());
+		return (T) Koe.foerste();
+		
 		
 	}
 	
 	@Test
 	boolean erTom() {
+		assertTrue(Koe.erTom());
+		return Koe.erTom();
 		
 	}
 	
 	@Test
 	int antall() {
+		return e0+e1+e2+e3+e4;
 		
 	}
 	
