@@ -21,7 +21,7 @@ public class KoeTest<T> {
 	private Integer e4 = 5;
 
 	protected KoeADT<Integer> reset() {
-		return null;
+		return Koe;
 	}
 
 	/**
@@ -49,27 +49,21 @@ public class KoeTest<T> {
 		assertEquals(e4, Koe.utKoe());
 	}
 	
-	
-	
 	@Test
 	T foerste() {
 		assertEquals(e0, Koe.foerste());
-		return (T) Koe.foerste();
-		
-		
+		return (T) Koe.foerste();	
 	}
 	
 	@Test
 	boolean erTom() {
 		assertTrue(Koe.erTom());
 		return Koe.erTom();
-		
 	}
 	
 	@Test
 	int antall() {
 		return e0+e1+e2+e3+e4;
-		
 	}
 	
 }
