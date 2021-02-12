@@ -5,7 +5,7 @@ import no.hvl.dat102.exception.EmptyCollectionException;
 
 //********************************************************************
 // 
-//  Representerer en samling kø implementer vha kjedet struktur
+//  Representerer en samling kï¿½ implementer vha kjedet struktur
 //********************************************************************
 
 public class KjedetKoe<T> implements KoeADT<T> {
@@ -13,7 +13,7 @@ public class KjedetKoe<T> implements KoeADT<T> {
 	private LinearNode<T> foran, bak;
 
 	/******************************************************************
-	 * Oppretter en tom kø.
+	 * Oppretter en tom kï¿½.
 	 ******************************************************************/
 	public KjedetKoe() {
 		antall = 0;
@@ -21,54 +21,58 @@ public class KjedetKoe<T> implements KoeADT<T> {
 	}
 
 	/******************************************************************
-	 * Legger inn et spesifisert element i køen.
+	 * Legger inn et spesifisert element i kï¿½en.
 	 ******************************************************************/
 	public void innKoe(T element) {
 		LinearNode<T> nyNode = new LinearNode<T>(element);
-
-		//TODO
+		
+		bak = nyNode;
+		
 	}
 
 	/******************************************************************
-	 * Fjerner og returnerer elementet foran i køen.
+	 * Fjerner og returnerer elementet foran i kï¿½en.
 	 ******************************************************************/
 	public T utKoe() {
 		if (erTom())
 			throw new EmptyCollectionException("koe");
+		
+		T result = foran.getElement();
+		foran = null;
 
-		//TODO
-		return null;
+		
+		return result;
 		
 	}
 
 	/******************************************************************
-	 * Returnerer elementet foran i køen ute å fjerne det.
+	 * Returnerer elementet foran i kï¿½en ute ï¿½ fjerne det.
 	 ******************************************************************/
 	public T foerste() {
 		if (erTom())
 			throw new EmptyCollectionException("koe");
-
-		//TODO
-		return null;
+		
+	T result = foran.getElement();
+	return result;
 		
 	}
 
 	/******************************************************************
-	 * Returnerer sann hvis køen er tom, usann ellers.
+	 * Returnerer sann hvis kï¿½en er tom, usann ellers.
 	 ******************************************************************/
 	public boolean erTom() {
 		return (antall == 0);
 	}
 
 	/******************************************************************
-	 * Returnerer antall elementer i køen.
+	 * Returnerer antall elementer i kï¿½en.
 	 ******************************************************************/
 	public int antall() {
 		return antall;
 	}
 
 	/******************************************************************
-	 * Returnerer en strengrepresentasjon av elementene i køen.
+	 * Returnerer en strengrepresentasjon av elementene i kï¿½en.
 	 ******************************************************************/
 	public String toString() {
 		String resultat = "";

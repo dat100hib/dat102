@@ -5,8 +5,8 @@ import no.hvl.dat102.exception.EmptyCollectionException;
 
 //********************************************************************
 //
-//  Representerer en tabell implementasjon av samling kø.
-// front til køen er i posisjon 0.
+//  Representerer en tabell implementasjon av samling kÃ¸.
+// front til kÃ¸en er i posisjon 0.
 //********************************************************************
 
 public class TabellKoe<T> implements KoeADT<T> {
@@ -15,14 +15,14 @@ public class TabellKoe<T> implements KoeADT<T> {
 	private T[] koe;
 
 	/******************************************************************
-	 * Oppretter en tom kø med standard størrelse.
+	 * Oppretter en tom kÃ¸ med standard stÃ¸rrelse.
 	 ******************************************************************/
 	public TabellKoe() {
 		this(STDK);
 	}
 
 	/******************************************************************
-	 * Oppretter en tom kø med spesifisert kapasitet..
+	 * Oppretter en tom kÃ¸ med spesifisert kapasitet..
 	 ******************************************************************/
 	public TabellKoe(int startKapasitet) {
 		bak = 0;
@@ -30,7 +30,7 @@ public class TabellKoe<T> implements KoeADT<T> {
 	}
 
 	/******************************************************************
-	 * Legger til et spesifisert element bak i køen, utvider hvis nødvendig
+	 * Legger til et spesifisert element bak i kÃ¸en, utvider hvis nï¿½dvendig
 	 * 
 	 ******************************************************************/
 	public void innKoe(T element) {
@@ -42,7 +42,7 @@ public class TabellKoe<T> implements KoeADT<T> {
 	}
 
 	/******************************************************************
-	 * Fjerner elementet foran i køen.
+	 * Fjerner elementet foran i kÃ¸en.
 	 ******************************************************************/
 	public T utKoe() {
 
@@ -75,21 +75,21 @@ public class TabellKoe<T> implements KoeADT<T> {
 	}
 
 	/******************************************************************
-	 * Returnerer sann hvis køen er tom, usann ellers..
+	 * Returnerer sann hvis kÃ¸en er tom, usann ellers..
 	 ******************************************************************/
 	public boolean erTom() {
 		return (bak == 0);
 	}
 
 	/******************************************************************
-	 * Returnerer antall elementer i køen.
+	 * Returnerer antall elementer i kÃ¸en.
 	 ******************************************************************/
 	public int antall() {
 		return bak;
 	}
 
 	/******************************************************************
-	 * Returnerer en strengrepresentasjon av elementene i køen.
+	 * Returnerer en strengrepresentasjon av elementene i kï¿½en.
 	 ******************************************************************/
 	public String toString() {
 		String resultat = "";
@@ -101,7 +101,7 @@ public class TabellKoe<T> implements KoeADT<T> {
 	}
 
 	/******************************************************************
-	 * Oppretter en ny større tabell for å lagre elmenetene.
+	 * Oppretter en ny stÃ¸rre tabell for Ã¥ lagre elmenetene.
 	 ******************************************************************/
 	private void utvid() {
 		T[] hjelpetabell = (T[]) (new Object[koe.length * 2]);
